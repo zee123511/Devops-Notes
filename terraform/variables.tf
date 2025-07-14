@@ -11,21 +11,21 @@ variable "resource_group_name" {
 }
 
 variable "vnet_name" {
-  description = "vnet01"
+  description = "vnet02"
   type = string
-  default = "vnet01"
+  default = "vnet02"
 }
 
 variable "subnet_name" {
-  description = "subnet01"
+  description = "subnet02"
   type = string
-  default = "subnet01"
+  default = "subnet02"
 }
 
 variable "nic_name" {
-  description = "my-nic"
+  description = "my-nic02"
   type = string
-  default = "my-nic"
+  default = "my-nic02"
 }
 
 variable "vm_name" {
