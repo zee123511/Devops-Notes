@@ -19,7 +19,7 @@ variable "vnet_name" {
 variable "subnet_name" {
   description = "subnet02"
   type = string
-  default = "subnet02"
+  default = "default"
 }
 
 variable "nic_name" {
@@ -38,4 +38,10 @@ variable "admin_username" {
   description = "admin_username"
   type = string
   default = "zee12351"
+}
+
+variable "vm_names" {
+  description = "names of VMs"
+  type = list (string)
+  default = ["vm1" , "vm2" , "vm3"]
 }
