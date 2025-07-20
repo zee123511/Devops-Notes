@@ -16,12 +16,30 @@ resource "azurerm_subnet" "subnet" {
   address_prefixes = ["10.22.16.0/24"]
 }
 
+resource "azurerm_network_security_group" "nsg01" {
+  name                = "TestSecurityGroup1"
+  location            = var.location
+  resource_group_name = data.azurerm_resource_group.rg.name
+
+  security_rule {
+    name                       = "test123"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "22"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+}
+
 resource "azurerm_public_ip" "pubip" {
   count               = length(var.vm_names)
   name                = "${var.vm_names[count.index]}-pip"
   location            = var.location
   resource_group_name = data.azurerm_resource_group.rg.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
   sku                 = "Basic"
 }
 
